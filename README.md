@@ -24,9 +24,9 @@ To find the soulstore component address linked to an NFT, you can query the Radi
 
 Use the JSON Key with the soulstore_creator internal_keyvaluestore address. 
 
-An example:
+An example of query:
 
-key_value_store_address: "internal_keyvaluestore_rdx1kqvwwn93kwqendgnswnzv4ks9fc3dx7l2cl4d6sa2ferxxnu9pj7v9",
+_key_value_store_address: "internal_keyvaluestore_rdx1kqvwwn93kwqendgnswnzv4ks9fc3dx7l2cl4d6sa2ferxxnu9pj7v9",
 keys: [
     {
       "key_json": {
@@ -46,7 +46,7 @@ keys: [
         ]
       }
     }
-  ]
+  ]_
 
 **Deposit assets to a soulstore**
 
