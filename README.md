@@ -13,14 +13,48 @@ It is not possible to deposit the NFT that is linked to the soulstore into the s
 
 **Create a soulstore for an NFT**
 
-**Find a soulstore for an NFT**
-To find the soulstore component address linked to an NFT, you can query the Radix Babylon Gateway API here:
+CALL_METHOD
+Address("component_rdx1cq35kzk43xyzprc4yqqmxfn767h06nycqm8r84x573l0u02mlm6jwg")
+"create_soulstore"
+NonFungibleGlobalId("${NonFungibleGlobalId}")
+;
 
-The KeyValueStore address is: 
+**Find a soulstore for an NFT**
+To find the soulstore component address linked to an NFT, you can query the Radix Babylon Gateway API here: https://radix-babylon-gateway-api.redoc.ly/#operation/KeyValueStoreData
+
+Use the JSON Key with the soulstore_creator internal_keyvaluestore address. 
+
+An example:
+
+key_value_store_address: "internal_keyvaluestore_rdx1kqvwwn93kwqendgnswnzv4ks9fc3dx7l2cl4d6sa2ferxxnu9pj7v9",
+keys: [
+    {
+      "key_json": {
+        "kind": "Tuple",
+        "fields": [
+          {
+            "value": {Insert some resource address},
+            "kind": "Reference",
+            "type_name": "ResourceAddress",
+            "field_name": "resource_address"
+          },
+          {
+            "value": {Insert some local id},
+            "kind": "NonFungibleLocalId",
+            "field_name": "local_id"
+          }
+        ]
+      }
+    }
+  ]
 
 **Deposit assets to a soulstore**
 
+You can use all the same deposit methods found on typical account component. This includes, "deposit", "deposit_batch", "try_deposit_or_abort", "try_deposite_or_refund", "try_deposit_batch_or_abort" and "try_deposit_batch_or_refund". The 'try' variations of deposits just accept None as their authoriser - you can't set a soulstore to block third-party deposits.
+
 **Withdraw assets from a soulstore**
+
+Methods similar to a typical account can also be found, including "withdraw' for tokens and "withdraw_non_fungibles". However, the last argument passed in the method must be a Proof of the NFT that the soulstore is linked to.
 
 
 
