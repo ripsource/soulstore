@@ -1,6 +1,6 @@
 **[soulstore]**
 
-**ELI5**
+**ELI5**: 
 Soulstores are like an inventory for an NFT. They allow you to create logic that deposits and withdraws assets from an NFT. When the NFT is traded, all of the contents of its inventory are also traded with it. 
 
 ---
