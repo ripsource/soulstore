@@ -14,7 +14,7 @@ It is not possible to deposit the NFT that is linked to the soulstore into the s
 **Create a soulstore for an NFT**
 
 _CALL_METHOD
-Address("component_rdx1cpgest6ajm0zkrf7xz8wr6enlx57ff5fpd6206qj26v2pr60lrackw")
+Address("component_rdx1cqhh325dzqqhn2fedxlhsdkk8rgl2xnyjlahyzk0990s4ar2mjlatq")
 "create_soulstore"
 NonFungibleGlobalId("${NonFungibleGlobalId}")
 ;_
@@ -26,7 +26,7 @@ Use the JSON Key with the soulstore_creator internal_keyvaluestore address.
 
 An example of query:
 
-_key_value_store_address: "internal_keyvaluestore_rdx1kp7rqafu6kkmglj8f23mswlwqse0nw9n3gqv47m68p3rg3yr70dxkt",
+_key_value_store_address: "internal_keyvaluestore_rdx1kpezfr0wv52js6gamed5zvk0x983r209gj2ndadfjkf3cvps3u5dt3",
 keys: [
     {
       "key_json": {
