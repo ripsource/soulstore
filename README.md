@@ -13,11 +13,11 @@ It is not possible to deposit the NFT that is linked to the soulstore into the s
 
 **Create a soulstore for an NFT**
 
-CALL_METHOD
-Address("component_rdx1cq35kzk43xyzprc4yqqmxfn767h06nycqm8r84x573l0u02mlm6jwg")
+_CALL_METHOD
+Address("component_rdx1cpgest6ajm0zkrf7xz8wr6enlx57ff5fpd6206qj26v2pr60lrackw")
 "create_soulstore"
 NonFungibleGlobalId("${NonFungibleGlobalId}")
-;
+;_
 
 **Find a soulstore for an NFT**
 To find the soulstore component address linked to an NFT, you can query the Radix Babylon Gateway API here: https://radix-babylon-gateway-api.redoc.ly/#operation/KeyValueStoreData
@@ -26,7 +26,7 @@ Use the JSON Key with the soulstore_creator internal_keyvaluestore address.
 
 An example of query:
 
-_key_value_store_address: "internal_keyvaluestore_rdx1kqvwwn93kwqendgnswnzv4ks9fc3dx7l2cl4d6sa2ferxxnu9pj7v9",
+_key_value_store_address: "internal_keyvaluestore_rdx1kp7rqafu6kkmglj8f23mswlwqse0nw9n3gqv47m68p3rg3yr70dxkt",
 keys: [
     {
       "key_json": {
