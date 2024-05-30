@@ -1,4 +1,4 @@
-###**[soulstore]**
+### **[soulstore]**
 
 #**ELI5**: 
 Soulstores are like an inventory for an NFT. They allow you to create logic that deposits and withdraws assets from an NFT. When the NFT is traded, all of the contents of its inventory are also traded with it. 
@@ -11,17 +11,17 @@ All soulstores should be created via the soulstore_creator blueprint. This recor
 
 It is not possible to deposit the NFT that is linked to the soulstore into the same soulstore. 
 
-**Create a soulstore for an NFT**
+# **Create a soulstore for an NFT**
 
 ```
-_CALL_METHOD
+CALL_METHOD
 Address("component_rdx1cqhh325dzqqhn2fedxlhsdkk8rgl2xnyjlahyzk0990s4ar2mjlatq")
 "create_soulstore"
 NonFungibleGlobalId("${NonFungibleGlobalId}")
-;_
+;
 ```
 
-**Find a soulstore for an NFT**
+# **Find a soulstore for an NFT**
 To find the soulstore component address linked to an NFT, you can query the Radix Babylon Gateway API here: https://radix-babylon-gateway-api.redoc.ly/#operation/KeyValueStoreData
 
 Use the JSON Key with the soulstore_creator internal_keyvaluestore address. 
@@ -29,7 +29,7 @@ Use the JSON Key with the soulstore_creator internal_keyvaluestore address.
 An example of query:
 
 ```
-_key_value_store_address: "internal_keyvaluestore_rdx1kpezfr0wv52js6gamed5zvk0x983r209gj2ndadfjkf3cvps3u5dt3",
+key_value_store_address: "internal_keyvaluestore_rdx1kpezfr0wv52js6gamed5zvk0x983r209gj2ndadfjkf3cvps3u5dt3",
 keys: [
     {
       "key_json": {
@@ -49,14 +49,14 @@ keys: [
         ]
       }
     }
-  ]_
+  ]
 ```
 
-#**Deposit assets to a soulstore**
+# **Deposit assets to a soulstore**
 
 You can use all the same deposit methods found on typical account component. This includes, "deposit", "deposit_batch", "try_deposit_or_abort", "try_deposite_or_refund", "try_deposit_batch_or_abort" and "try_deposit_batch_or_refund". The 'try' variations of deposits just accept None as their authoriser - you can't set a soulstore to block third-party deposits.
 
-#**Withdraw assets from a soulstore**
+# **Withdraw assets from a soulstore**
 
 Methods similar to a typical account can also be found, including "withdraw' for tokens and "withdraw_non_fungibles". However, the last argument passed in the method must be a Proof of the NFT that the soulstore is linked to.
 
