@@ -16,7 +16,11 @@ mod soulstore {
     }
 
     impl Soulstore {
-        pub fn instantiate_soulstore(global_id: NonFungibleGlobalId) -> ComponentAddress {
+        pub fn instantiate_soulstore(
+            global_id: NonFungibleGlobalId,
+            admin: ResourceAddress,
+            dapp_global: GlobalAddress, // The dapp_definition, not required if modifying this blueprint
+        ) -> ComponentAddress {
             let (address_reservation, component_address) =
                 Runtime::allocate_component_address(Soulstore::blueprint_id());
 
@@ -25,7 +29,21 @@ mod soulstore {
                 global_id,
             }
             .instantiate()
-            .prepare_to_globalize(OwnerRole::None)
+            .prepare_to_globalize(OwnerRole::Fixed(rule!(require(admin))))
+            .metadata(metadata! (
+                roles {
+                    metadata_setter => rule!(require(admin));
+                    metadata_setter_updater => rule!(require(admin));
+                    metadata_locker => rule!(require(admin));
+                    metadata_locker_updater => rule!(require(admin));
+                },
+                init {
+                    "name" => "[soulstore]".to_owned(), locked;
+                    "description" => "A soulstore: Deposit and withdraw assets from an NFT.".to_owned(), locked;
+                    "dapp_definition" => dapp_global, updatable;
+                    "icon_url" => Url::of("https://soulstore.app/dark_ghost.png"), updatable;
+                }
+            ))
             .with_address(address_reservation)
             .globalize();
 
@@ -254,6 +272,38 @@ mod soulstore {
             vault
                 .as_non_fungible()
                 .take_non_fungibles(&non_fungible_local_ids)
+        }
+
+        pub fn has_resource(&self, resource_address: ResourceAddress) -> bool {
+            self.vaults.get(&resource_address).is_some()
+        }
+
+        pub fn has_atleast_amount(
+            &self,
+            resource_address: ResourceAddress,
+            amount: Decimal,
+        ) -> bool {
+            if self.vaults.get(&resource_address).is_some() {
+                let vault = self.vaults.get(&resource_address).unwrap();
+                vault.amount() >= amount
+            } else {
+                false
+            }
+        }
+
+        pub fn has_non_fungible_id(
+            &self,
+            resource_address: ResourceAddress,
+            non_fungible_local_id: NonFungibleLocalId,
+        ) -> bool {
+            if self.vaults.get(&resource_address).is_some() {
+                let vault = self.vaults.get(&resource_address).unwrap();
+                vault
+                    .as_non_fungible()
+                    .contains_non_fungible(&non_fungible_local_id)
+            } else {
+                false
+            }
         }
     }
 }
