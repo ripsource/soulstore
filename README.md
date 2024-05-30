@@ -1,6 +1,5 @@
 # **[soulstore]**
 
-### **ELI5**: 
 Soulstores are like an inventory for an NFT. They allow you to create logic that deposits and withdraws assets from an NFT. When the NFT is traded, all of the contents of its inventory are also traded with it. 
 
 ---
@@ -60,7 +59,15 @@ You can use all the same deposit methods found on typical account component. Thi
 
 Methods similar to a typical account can also be found, including "withdraw' for tokens and "withdraw_non_fungibles". However, the last argument passed in the method must be a Proof of the NFT that the soulstore is linked to.
 
+## **Potential Use-Cases**
 
+1. **Transfer NFTs in bulk**: The Radix Engine currently limits the amount of events that can happen in a single transaction. This means that its only possible to transfer approx. 60 NFTs in a single transaction. By utilising a soulstore, its possible to trade 1 NFT that 'contains' an near unlimited amount. This could also be a more specific feature of the NFT, for example an RPG character NFT that has battled to earn equipment NFTs - you could trade the character NFT along with all its equipment. 
+
+2. **Airdrops to NFT holders**: If an NFT is sitting in a component, for instance on an NFT marketplace, it can be tricky to find or decide who the current owner is. Rather than airdropping to a specific account - you can just airdrop to the NFT more directly. 
+
+3. **NFT slots**: While this isn't specifically built into the current soulstore component - it serves as a great template for having NFTs with specific slots which certain NFTs can be attached to. Think again of an RPG character that can only have one sword NFT equipped at a time. 
+
+4. **Makeshift account balance within Scrypto**: Sometimes it can be frustrating to not know who the caller of a method is or be able to query their account balance within Scrypto code. However, for certain purposes, soulstores could be useful as they each have read-only methods for querying a specific NFTs fungible and non-fungible contents. 
 
 
 
