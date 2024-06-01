@@ -61,7 +61,7 @@ Methods similar to a typical account can also be found, including "withdraw' for
 
 ## **Read-only methods on soulstores**
 
-There are three read-only methods on soulstore components which can be used to check the contents of a soulstore via Scyrpto. The three methods include checking if a resource if vault is present (note that a vault could be there but empty), checking for an amount of resource > or =, checking a specific NFT is present:
+There are three read-only methods on soulstore components which can be used to check the contents of a soulstore via Scyrpto. The three methods include checking if a resource vault is present (note that a vault could be there, but empty), checking for an amount of resource > or =, checking a specific NFT is present:
 
 ```
  pub fn has_resource(&self, resource_address: ResourceAddress) -> bool
