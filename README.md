@@ -59,6 +59,20 @@ You can use all the same deposit methods found on typical account component. Thi
 
 Methods similar to a typical account can also be found, including "withdraw' for tokens and "withdraw_non_fungibles". However, the last argument passed in the method must be a Proof of the NFT that the soulstore is linked to.
 
+## **Read-only methods on soulstores**
+
+There are three read-only methods on soulstore components which can be used to check the contents of a soulstore via Scyrpto. The three methods include checking if a resource if vault is present (note that a vault could be there but empty), checking for an amount of resource > or =, checking a specific NFT is present:
+
+```
+ pub fn has_resource(&self, resource_address: ResourceAddress) -> bool
+```
+```
+ pub fn has_atleast_amount(&self, resource_address: ResourceAddress, amount: Decimal) -> bool
+```
+```
+ pub fn has_non_fungible_id(&self, resource_address: ResourceAddress, non_fungible_local_id: NonFungibleLocalId) -> bool
+```
+
 ## **Potential Use-Cases**
 
 1. **Transfer NFTs in bulk**: The Radix Engine currently limits the amount of events that can happen in a single transaction. This means that its only possible to transfer approx. 60 NFTs in a single transaction. By utilising a soulstore, its possible to trade 1 NFT that 'contains' an near unlimited amount. This could also be a more specific feature of the NFT, for example an RPG character NFT that has battled to earn equipment NFTs - you could trade the character NFT along with all its equipment. 
